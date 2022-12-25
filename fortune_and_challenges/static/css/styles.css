@@ -1,0 +1,36 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css');
+
+html{
+    font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+body{
+    background-color: #eee;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+.btn-outline-light{
+    margin-top: 25px !important;
+}
+
+.login{
+    height: 100vh !important;
+}
+
+.login input{
+    margin-bottom: 1.5rem;
+}
+
+.gradient-custom {
+    background: -webkit-linear-gradient(to right, #F53803, #F5D020);
+    background: linear-gradient(to right,  #F53803, #F5D020)
+}

@@ -1,4 +1,4 @@
-from django.forms import PasswordInput, TextInput, CharField, ModelForm
+from django.forms import PasswordInput, TextInput, CharField
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UsernameField, UserCreationForm
 from . models import Customer
@@ -16,8 +16,8 @@ class CustomAuthenticationForm(AuthenticationForm):
 
     def __init__(self, request=None, *args, **kwargs):
         super().__init__(request=None, *args, **kwargs)
-        self.fields['username'].label = 'Email'
-        self.fields['password'].label = 'Password'
+        self.fields['username'].label = 'Имейл'
+        self.fields['password'].label = 'Парола'
 
 class SignUpForm(UserCreationForm):
     name = CharField(max_length=50, min_length=5)
@@ -27,6 +27,10 @@ class SignUpForm(UserCreationForm):
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['email'].label = 'Имейл'
+        self.fields['password1'].label = 'Парола'
+        self.fields['password2'].label = 'Повтори парола'
+        self.fields['name'].label = 'Имена'
         for field in self.fields:
             self.fields[field].widget.attrs.update({"autocomplete": "current-password", 'class': 'form-control form-control-lg'})
 

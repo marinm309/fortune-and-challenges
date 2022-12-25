@@ -29,25 +29,25 @@
                     <div class="mb-md-5 mt-md-4 pb-5">
       
                     
-                      <p class="text-white-50 mb-5">Create account</p>
+                      <p class="text-white-50 mb-5">Създай акаунт</p>
         
                       {% for field in form %}
                       <div class="form-outline form-white mb-4">
-                        {{field.label}}
+                        {{field.label}}:
                         {{field}}
                         {{field.errors}}
                       </div>
                       {% endfor %}
   
         
-                      <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
+                      <button class="btn btn-outline-light btn-lg px-5" type="submit">Регистрация</button>
         
         
                     </div>
                   </form>
       
                   <div>
-                    <p class="mb-0">Have an account? <a href="{% url 'login' %}" class="text-white-50 fw-bold">Sign In</a>
+                    <p class="mb-0">Имаш вече акаунт? <a href="{% url 'login' %}" class="text-white-50 fw-bold">Вход</a>
                     </p>
                   </div>
       
