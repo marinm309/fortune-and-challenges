@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+class Fortune(models.Model):
+    description = models.TextField()
+
+
+class Challenge(models.Model):
+    description = models.TextField()
