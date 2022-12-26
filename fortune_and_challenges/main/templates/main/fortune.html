@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+<h1 class="fortune-title">КЪСМЕТЧЕ</h1>
+<!-- <div class="fortune-wrapper">
+    <h1 class="fortune-text">{{item.description}}</h1>
+</div>
+<div class="fortune-btn-wrapper">
+    <a class="fortune-btn" href="{% url 'home' %}">Начало</a>
+</div> -->
+
+<script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+<script>
+    let img;
+    let stamp;
+    let topLayer;
+
+    let canvasWidth = document.querySelector('body').offsetWidth
+
+    function setup() {
+        createCanvas(canvasWidth / 2, 200);
+        textAlign(CENTER);
+        textFont('Helvetica')
+        textSize(18);
+        topLayer = createGraphics(width, height);
+        topLayer.background(200);
+        topLayer.textSize(18);
+        topLayer.textAlign(CENTER);
+        topLayer.textFont('Helvetica')
+        topLayer.text("Изтъркай ме", width / 2, height / 2);
+        topLayer.imageMode(CENTER);
+        topLayer.strokeWeight(40);
+        topLayer.blendMode(REMOVE);
+    }
+
+    function draw() {
+        background(255);
+        text('{{item.description}}', width / 2, height / 2);
+
+        if (mouseIsPressed) {
+            topLayer.line(pmouseX, pmouseY, mouseX, mouseY);
+        }
+
+        image(topLayer, 0, 0);
+    }
+</script>
+{% endblock content %}

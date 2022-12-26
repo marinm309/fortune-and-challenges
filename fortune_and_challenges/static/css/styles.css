@@ -1,36 +1,95 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css');
 
-html{
-    font-family: 'Roboto', 'Arial', sans-serif;
+html {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-body{
+body {
     background-color: #eee;
+    margin: 0;
+    padding: 0;
+    background: -webkit-linear-gradient(to right, #F53803, #F5D020);
+    background: linear-gradient(to right, #F53803, #F5D020)
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul {
+    list-style: none;
     margin: 0;
     padding: 0;
 }
 
-a{
-    text-decoration: none;
+nav {
+    height: 76px;
+    background-color: white;
+    font-size: 24px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
-ul{
-    list-style: none;
+nav ul {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0 25%;
 }
 
-.btn-outline-light{
+nav ul a {
+    transition-duration: 0.3s;
+}
+
+nav ul a:hover {
+    color: rgb(197, 130, 6);
+    text-decoration: unset;
+}
+
+.btn-outline-light {
     margin-top: 25px !important;
 }
 
-.login{
-    height: 100vh !important;
+.login {
+    height: 60vh !important;
 }
 
-.login input{
+.login input {
     margin-bottom: 1.5rem;
 }
 
 .gradient-custom {
     background: -webkit-linear-gradient(to right, #F53803, #F5D020);
-    background: linear-gradient(to right,  #F53803, #F5D020)
+    background: linear-gradient(to right, #F53803, #F5D020)
+}
+
+.fortune-title {
+    text-align: center;
+    user-select: none;
+}
+
+canvas {
+    position: absolute;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 800px) {
+    nav ul {
+        padding: unset;
+    }
+
+    nav {
+        height: 46px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    canvas {
+        width: calc(90%) !important;
+    }
 }
