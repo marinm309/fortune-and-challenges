@@ -22,3 +22,9 @@ def fortune(request):
 
     context = {'item': item}
     return render(request, 'main/fortune.html', context)
+
+
+@login_required(login_url='login')
+def challenge(request):
+    context = {}
+    return render(request, 'main/challenge.html', context)
