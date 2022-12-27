@@ -6,6 +6,11 @@
 <h1 class="fortune-title">КЪСМЕТЧЕ</h1>
 <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
 <script>
+
+    window.onbeforeunload = function() {
+        return "test";
+    }
+
     let img;
     let stamp;
     let topLayer;
