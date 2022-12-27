@@ -13,6 +13,11 @@ UserModel = get_user_model()
 class UserLoginView(SuccessMessageMixin, LoginView):
     template_name = 'users/login.html'
     form_class = CustomAuthenticationForm
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('home')
+        return super(UserLoginView, self).dispatch(request, *args, **kwargs)
     
 
 
@@ -25,6 +30,11 @@ class UserCreationView(SuccessMessageMixin, views.CreateView):
         result = super().form_valid(form)
         login(self.request, self.object)
         return result
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('home')
+        return super(UserCreationView, self).dispatch(request, *args, **kwargs)
 
     
 class UserLogoutView(LogoutView):
