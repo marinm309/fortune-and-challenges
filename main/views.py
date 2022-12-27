@@ -17,8 +17,11 @@ def fortune(request):
         if UserFortune.objects.filter(fortune=i, user=user).count() == 0:
             new_items_list.append(i)
 
-    item = choice(new_items_list)
-    #UserFortune.objects.create(fortune=item, user=user)
+    try:
+        item = choice(new_items_list)
+        UserFortune.objects.create(fortune=item, user=user)
+    except:
+        item = {'description': 'Няма нови късметчета!'}
 
     context = {'item': item}
     return render(request, 'main/fortune.html', context)

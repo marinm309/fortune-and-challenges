@@ -13,16 +13,17 @@
     let canvasWidth = document.querySelector('body').offsetWidth
 
     function setup() {
-        createCanvas(canvasWidth / 2, 200);
+        createCanvas(canvasWidth / 2, 300);
         textAlign(CENTER);
         textFont('Helvetica')
         textSize(18);
+        textWrap(WORD);
         topLayer = createGraphics(width, height);
         topLayer.background(200);
         topLayer.textSize(18);
         topLayer.textAlign(CENTER);
         topLayer.textFont('Helvetica')
-        topLayer.text("Изтъркай ме", width / 2, height / 2);
+        topLayer.text("Изтъркай ме", width / 16, height / 2, (canvasWidth  - 2 * (canvasWidth / 16)) / 2, 150);
         topLayer.imageMode(CENTER);
         topLayer.strokeWeight(40);
         topLayer.blendMode(REMOVE);
@@ -30,7 +31,7 @@
 
     function draw() {
         background(255);
-        text('{{item.description}}', width / 2, height / 2);
+        text('{{item.description}}', width / 16, height / 2, (canvasWidth  - 2 * (canvasWidth / 16)) / 2, 150);
 
         if (mouseIsPressed) {
             topLayer.line(pmouseX, pmouseY, mouseX, mouseY);
