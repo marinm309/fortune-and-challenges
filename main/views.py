@@ -33,7 +33,7 @@ def challenge(request):
     return render(request, 'main/challenge.html', context)
 
 
-@login_required(login_url='login')
+#@login_required(login_url='login')
 def wheel(request):
     context = {}
     return render(request, 'main/wheel.html', context)

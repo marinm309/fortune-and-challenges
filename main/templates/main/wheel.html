@@ -159,13 +159,16 @@
         if (wheelSpinning == false) {
             // Based on the power level selected adjust the number of spins for the wheel, the more times is has
             // to rotate with the duration of the animation the quicker the wheel spins.
-            if (wheelPower == 1) {
-                theWheel.animation.spins = 3;
-            } else if (wheelPower == 2) {
-                theWheel.animation.spins = 8;
-            } else if (wheelPower == 3) {
-                theWheel.animation.spins = 15;
-            }
+
+            // if (wheelPower == 1) {
+            //     theWheel.animation.spins = 3;
+            // } else if (wheelPower == 2) {
+            //     theWheel.animation.spins = 8;
+            // } else if (wheelPower == 3) {
+            //     theWheel.animation.spins = 15;
+            // }
+
+            theWheel.animation.spins = 15
 
             // Disable the spin button so can't click again while wheel is spinning.
             document.getElementById('spin_button').src = "{% static 'images/spin_off.png' %}";
