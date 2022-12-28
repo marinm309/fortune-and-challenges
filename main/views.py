@@ -12,10 +12,13 @@ def fortune(request):
     user = request.user.customer
     items = Fortune.objects.all()
     new_items_list = []
+    old_items_list = []
     
     for i in items:
         if UserFortune.objects.filter(fortune=i, user=user).count() == 0:
             new_items_list.append(i)
+        else:
+            old_items_list.append(i)
 
     try:
         item = choice(new_items_list)
@@ -23,7 +26,7 @@ def fortune(request):
     except:
         item = {'description': 'Няма нови късметчета!'}
 
-    context = {'item': item}
+    context = {'item': item, 'old_items_list': old_items_list}
     return render(request, 'main/fortune.html', context)
 
 

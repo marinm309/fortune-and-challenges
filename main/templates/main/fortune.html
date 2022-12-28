@@ -13,11 +13,21 @@
         object-fit: cover;
         position: absolute;
         top: 50%;
-        left: 50%;
+        left: 30%;
         transform: translate(-50%, -50%);
     }
 </style>
 <h1 class="fortune-title">КЪСМЕТЧЕ</h1>
+<div class="old-fortunes">
+    <ul>
+        {% for item in old_items_list %}
+        <li>{{item.description}}</li>
+        {% endfor %}
+    </ul>
+</div>
+<div style="min-height: 750px; width: 0px;">
+
+</div>
 <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
 <script>
 
@@ -30,6 +40,23 @@
     let topLayer;
 
     let canvasWidth = document.querySelector('body').offsetWidth
+
+    window.addEventListener("load", (event) => {
+        const main = document.querySelector('main')
+        main.addEventListener('touchstart', onScratch)
+        main.addEventListener('touchend', function(){
+            const body = document.querySelector('body')
+            body.style.overflow = 'unset'
+            body.style.height = 'unset'
+        })
+    })
+
+    function onScratch(){
+            const body = document.querySelector('body')
+            body.style.overflow = 'hidden'
+            body.style.height = '100%'
+        }
+
 
     function setup() {
         createCanvas(canvasWidth / 2, 300);
@@ -60,4 +87,5 @@
     }
 
 </script>
+
 {% endblock content %}

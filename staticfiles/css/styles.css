@@ -116,6 +116,49 @@ nav ul a:hover {
     color: black;
 }
 
+.old-fortunes{
+    position: absolute;
+    background-color: #ddd;
+    height: 600px;
+    width: 350px;
+    border-radius: 10px;
+    top: 50%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+}
+
+.old-fortunes ul{
+    display: flex;
+    flex-direction: column;
+}
+
+.old-fortunes ul li{
+    border-bottom: 3px solid rgb(136, 136, 136);
+    padding: 15px 40px;
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 1500px){
+    .old-fortunes{
+        height: 200px;
+        width: 700px;
+        top: 94%;
+        left: 50% !important;
+        transform: translate(-50%, -50%);
+        margin-bottom: 30px;
+    }
+
+    canvas {
+        border-radius: 10px;
+        object-fit: cover;
+        position: absolute;
+        top: 50%;
+        left: 50% !important;
+        transform: translate(-50%, -50%);
+    }
+}
+
 @media only screen and (max-width: 800px) {
     nav ul {
         padding: unset;
@@ -123,6 +166,12 @@ nav ul a:hover {
 
     nav {
         height: 46px;
+    }
+}
+
+@media only screen and (max-width: 750px){
+    .old-fortunes{
+        width: 320px;
     }
 }
 
