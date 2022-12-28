@@ -13,6 +13,7 @@ Verison History:
 body
 {
     font-family: arial;
+    user-select: none;
 }
 
 /* Sets the background image for the wheel */
@@ -127,4 +128,8 @@ td.pw3
     .power tbody tr td{
         width: 100%;
     }
+}
+
+.power tbody tr td{
+    transition-duration: 0.5s;
 }
