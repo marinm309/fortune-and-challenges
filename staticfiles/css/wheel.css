@@ -95,9 +95,9 @@ td.pw3 {
     transform: translate(-50%, -50%);
     z-index: 5;
     border-radius: 50%;
-    height: 155px;
-    width: 155px;
-    object-fit: fill;
+    height: 300px;
+    width: 300px;
+    object-fit: contain;
 }
 
 @media only screen and (max-width: 600px) {
