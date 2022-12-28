@@ -41,36 +41,55 @@
 
     let canvasWidth = document.querySelector('body').offsetWidth
 
+    let size = window.innerWidth
+
+    // window.addEventListener('load', function () {
+    //     size = window.innerWidth
+    //     if (size <= 600) {
+    //         size = 10
+    //     } else if (size <= 1500) {
+    //         size = 16
+    //     } else {
+    //         size = 20
+    //     }
+    // })
+
     window.addEventListener("load", (event) => {
         const main = document.querySelector('main')
         document.querySelector('canvas').classList.add('fortune-canvas')
         main.addEventListener('touchstart', onScratch)
-        main.addEventListener('touchend', function(){
+        main.addEventListener('touchend', function () {
             const body = document.querySelector('body')
             body.style.overflow = 'unset'
             body.style.height = 'unset'
         })
     })
 
-    function onScratch(){
-            const body = document.querySelector('body')
-            body.style.overflow = 'hidden'
-            body.style.height = '100%'
-        }
-
+    function onScratch() {
+        const body = document.querySelector('body')
+        body.style.overflow = 'hidden'
+        body.style.height = '100%'
+    }
 
     function setup() {
         createCanvas(canvasWidth / 2, 300);
-        textAlign(CENTER);
+        textAlign(CENTER, CENTER);
         textFont('Helvetica')
-        textSize(18);
+        if (size <= 600) {
+            size = 10
+        } else if (size <= 1500) {
+            size = 16
+        } else {
+            size = 20
+        }
+        textSize(size);
         textWrap(WORD);
         topLayer = createGraphics(width, height);
         topLayer.background(200);
         topLayer.textSize(18);
-        topLayer.textAlign(CENTER);
+        topLayer.textAlign(CENTER, CENTER);
         topLayer.textFont('Helvetica')
-        topLayer.text("Изтъркай ме", width / 16, height / 2, (canvasWidth - 2 * (canvasWidth / 16)) / 2, 150);
+        topLayer.text("Изтъркай ме", width / 16, height / 4, (canvasWidth - 2 * (canvasWidth / 16)) / 2, 150);
         topLayer.imageMode(CENTER);
         topLayer.strokeWeight(40);
         topLayer.blendMode(REMOVE);
@@ -78,7 +97,7 @@
 
     function draw() {
         background(255);
-        text('{{item.description}}', width / 16, height / 2, (canvasWidth - 2 * (canvasWidth / 16)) / 2, 150);
+        text('lorem das d asd as d sa das d sa d sa das  d 14568 4658 145682 145628013456820 1245680 14568 1245680 1456820 14568230 1456820 14568920 14568230 46123580. 12345680. 4156820 1456820 14568230 46125803 4612580', width / 16, height / 4, (canvasWidth - 2 * (canvasWidth / 16)) / 2, 150);
 
         if (mouseIsPressed) {
             topLayer.line(pmouseX, pmouseY, mouseX, mouseY);
