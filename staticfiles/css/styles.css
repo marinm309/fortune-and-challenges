@@ -149,7 +149,7 @@ nav ul a:hover {
         margin-bottom: 30px;
     }
 
-    canvas {
+    .fortune-canvas {
         border-radius: 10px;
         object-fit: cover;
         position: absolute;

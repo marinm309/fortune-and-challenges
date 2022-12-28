@@ -43,6 +43,7 @@
 
     window.addEventListener("load", (event) => {
         const main = document.querySelector('main')
+        document.querySelector('canvas').classList.add('fortune-canvas')
         main.addEventListener('touchstart', onScratch)
         main.addEventListener('touchend', function(){
             const body = document.querySelector('body')
