@@ -10,79 +10,98 @@ Verison History:
     - Minor updates for the 2.0 winwheel example.
 */
 
-body
-{
+body {
     font-family: arial;
     user-select: none;
 }
 
 /* Sets the background image for the wheel */
-td.the_wheel
-{
+td.the_wheel {
     background-image: url(../images/wheel_back.png);
     background-position: center;
-    background-repeat: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+
+    width: 450px;
+    height: 450px;
+    padding-top: 62px;
+    
+}
+
+td canvas {
+    width: 100% !important;
+    height: 100% !important;
 }
 
 /* Do some css reset on selected elements */
-h1, p
-{
+h1,
+p {
     margin: 0;
 }
 
-div.power_controls
-{
-    margin-right:70px;
+div.power_controls {
+    margin-right: 70px;
 }
 
-div.html5_logo
-{
-    margin-left:70px;
+div.html5_logo {
+    margin-left: 70px;
 }
 
 /* Styles for the power selection controls */
-table.power
-{
+table.power {
     background-color: #cccccc;
     cursor: pointer;
-    border:1px solid #333333;
+    border: 1px solid #333333;
 }
 
-table.power th
-{
+table.power th {
     background-color: white;
     cursor: default;
 }
 
-td.pw1
-{
+td.pw1 {
     background-color: #6fe8f0;
 }
 
-td.pw2
-{
+td.pw2 {
     background-color: #86ef6f;
 }
 
-td.pw3
-{
+td.pw3 {
     background-color: #ef6f6f;
 }
 
 /* Style applied to the spin button once a power has been selected */
-.clickable
-{
+.clickable {
     cursor: pointer;
 }
 
 /* Other misc styles */
-.margin_bottom
-{
+.margin_bottom {
     margin-bottom: 5px;
 }
 
-@media only screen and (max-width: 600px){
-    td.the_wheel{
+#spin_button {
+    position: absolute;
+    top: calc(50% + 32px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    border-radius: 50%;
+    height: 155px;
+    width: 155px;
+    object-fit: fill;
+}
+
+@media only screen and (max-width: 600px) {
+    td.the_wheel {
         width: 320px;
         height: 350px;
         padding-top: 50px;
@@ -95,14 +114,14 @@ td.pw3
         height: 320px !important;
     }
 
-    #wheel-elements-wrapper{
+    #wheel-elements-wrapper {
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
         justify-content: center;
     }
 
-    .power_controls{
+    .power_controls {
         margin: unset !important;
         display: flex;
         flex-direction: column;
@@ -110,26 +129,32 @@ td.pw3
         align-items: center;
     }
 
-    .whole-wheel-wrapper{
+    .whole-wheel-wrapper {
         margin-top: 10px;
     }
 
-    .power tbody{
+    .power tbody {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .power tbody tr{
+    .power tbody tr {
         width: 33%;
         text-align: center;
     }
 
-    .power tbody tr td{
+    .power tbody tr td {
         width: 100%;
+    }
+
+    #spin_button{
+        height: 110px;
+        width: 110px;
+        top: calc(50% + 10px);
     }
 }
 
-.power tbody tr td{
+.power tbody tr td {
     transition-duration: 0.5s;
 }

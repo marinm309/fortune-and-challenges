@@ -9,7 +9,6 @@ html {
 }
 
 body {
-    overscroll-behavior: contain;
     background-color: #eee;
     margin: 0;
     padding: 0;

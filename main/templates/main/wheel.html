@@ -17,7 +17,7 @@
         <tr id="wheel-elements-wrapper">
             <td>
                 <div class="power_controls">
-                    <br />
+                    <!-- <br />
                     <br />
                     <table class="power" cellpadding="10" cellspacing="0">
                         <tr>
@@ -33,11 +33,11 @@
                             <td align="center" id="pw1" onClick="powerSelected(1);">Low</td>
                         </tr>
                     </table>
-                    <br />
+                    <br /> -->
                     <img id="spin_button" src="{% static 'images/spin_off.png' %}" alt="Spin" onClick="startSpin();" />
-                    <br /><br />
+                    <!-- <br /><br />
                     &nbsp;&nbsp;<a href="#" onClick="resetWheel(); return false;">Play
-                        Again</a>
+                        Again</a> -->
                 </div>
             </td>
             <td width="438" height="582" class="the_wheel" align="center" valign="center">
@@ -177,6 +177,8 @@
             // Set to true so that power can't be changed and spin button re-enabled during
             // the current animation. The user will have to reset before spinning again.
             wheelSpinning = true;
+
+            document.getElementById('spin_button').src = "{% static 'images/spin_on.png' %}";
         }
     }
 
