@@ -79,3 +79,52 @@ td.pw3
 {
     margin-bottom: 5px;
 }
+
+@media only screen and (max-width: 600px){
+    td.the_wheel{
+        width: 320px;
+        height: 350px;
+        padding-top: 50px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    td canvas {
+        width: 320px !important;
+        height: 320px !important;
+    }
+
+    #wheel-elements-wrapper{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .power_controls{
+        margin: unset !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .whole-wheel-wrapper{
+        margin-top: 10px;
+    }
+
+    .power tbody{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .power tbody tr{
+        width: 33%;
+        text-align: center;
+    }
+
+    .power tbody tr td{
+        width: 100%;
+    }
+}
