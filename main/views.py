@@ -31,3 +31,8 @@ def fortune(request):
 def challenge(request):
     context = {}
     return render(request, 'main/challenge.html', context)
+
+
+def wheel(request):
+    context = {}
+    return render(request, 'main/wheel.html', context)

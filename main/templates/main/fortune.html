@@ -7,9 +7,9 @@
 <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
 <script>
 
-    window.onbeforeunload = function() {
-        return "test";
-    }
+    // window.onbeforeunload = function () {
+    //     return "test";
+    // }
 
     let img;
     let stamp;
@@ -28,7 +28,7 @@
         topLayer.textSize(18);
         topLayer.textAlign(CENTER);
         topLayer.textFont('Helvetica')
-        topLayer.text("Изтъркай ме", width / 16, height / 2, (canvasWidth  - 2 * (canvasWidth / 16)) / 2, 150);
+        topLayer.text("Изтъркай ме", width / 16, height / 2, (canvasWidth - 2 * (canvasWidth / 16)) / 2, 150);
         topLayer.imageMode(CENTER);
         topLayer.strokeWeight(40);
         topLayer.blendMode(REMOVE);
@@ -36,7 +36,7 @@
 
     function draw() {
         background(255);
-        text('{{item.description}}', width / 16, height / 2, (canvasWidth  - 2 * (canvasWidth / 16)) / 2, 150);
+        text('{{item.description}}', width / 16, height / 2, (canvasWidth - 2 * (canvasWidth / 16)) / 2, 150);
 
         if (mouseIsPressed) {
             topLayer.line(pmouseX, pmouseY, mouseX, mouseY);
@@ -44,5 +44,6 @@
 
         image(topLayer, 0, 0);
     }
+
 </script>
 {% endblock content %}
