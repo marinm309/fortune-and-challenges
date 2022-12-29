@@ -106,6 +106,18 @@
 
     let audio = new Audio("{% static 'images/1.mp3' %}");
 
+    const body = document.body
+    const video = document.createElement('video')
+    video.width = 150
+    video.height = 150
+    video.autoplay = true
+    video.style.display = 'none'
+    const s = document.createElement('source')
+    s.src = "{% static 'images/cat.mp4' %}"
+    s.type = "video/mp4"
+    video.appendChild(s)
+    body.append(video)
+
     // This function is called when the sound is to be played.
     function playSound() {
         // Stop and rewind the sound if it already happens to be playing.
@@ -157,19 +169,9 @@
     // Click handler for spin button.
     // -------------------------------------------------------
     function startSpin() {
+        video.style.display = 'block'
         // Ensure that spinning can't be clicked again while already running.
         if (wheelSpinning == false) {
-
-            const body = document.body
-            const video = document.createElement('video')
-            video.width = 150
-            video.height = 150
-            video.autoplay = true
-            const s = document.createElement('source')
-            s.src = "{% static 'images/cat.mp4' %}"
-            s.type = "video/mp4"
-            video.appendChild(s)
-            body.append(video)
 
             setInterval(function () {
                 video.remove()
