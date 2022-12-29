@@ -27,9 +27,9 @@ SECRET_KEY = 'django-insecure-=a#vam5kz9$mni4aqvb)i5i_3e=n=e0#vlrk8dnuaxipb0rl&k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'fortune-and-challenges-production.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', 'kusmetche.up.railway.app', '127.0.0.1']
 
-CSRF_TRUSTED_ORIGINS = ['https://fortune-and-challenges-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://kusmetche.up.railway.app']
 
 
 # Application definition
