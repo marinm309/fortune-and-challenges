@@ -31,10 +31,6 @@
 <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
 <script>
 
-    // window.onbeforeunload = function () {
-    //     return "test";
-    // }
-
     let img;
     let stamp;
     let topLayer;
@@ -47,18 +43,6 @@
         const main = document.querySelector('main')
         const body = document.querySelector('body')
         document.querySelector('canvas').classList.add('fortune-canvas')
-        // main.addEventListener('touchstart', onScratch)
-        // main.addEventListener('touchend', function () {
-        //     body.style.overflow = 'unset'
-        //     // body.style.height = 'unset'
-        // })
-    })
-
-    // function onScratch() {
-    //     const body = document.querySelector('body')
-    //     body.style.overflow = 'hidden'
-    //     body.style.height = '100%'
-    // }
 
     function setup() {
         createCanvas(canvasWidth / 2, 300);
