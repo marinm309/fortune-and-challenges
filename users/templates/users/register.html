@@ -20,9 +20,6 @@
                   <form method="POST" action="{% url 'register' %}">
                     {% csrf_token %}
                     <div class="mb-md-5 mt-md-4 pb-5">
-      
-                    
-                      <p class="text-white-50 mb-5">Създай акаунт</p>
         
                       {% for field in form %}
                       <div class="form-outline form-white mb-4">

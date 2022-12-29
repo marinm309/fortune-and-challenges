@@ -88,6 +88,16 @@ td.pw3 {
     object-fit: contain;
 }
 
+video{
+    position: absolute;
+    top: calc(50% + 32px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 @media only screen and (max-width: 600px) {
     td.the_wheel {
         width: 320px;
@@ -139,6 +149,12 @@ td.pw3 {
     #spin_button{
         height: 200px;
         width: 200px;
+        top: calc(50% + 10px);
+    }
+
+    video{
+        width: 100px;
+        height: 100px;
         top: calc(50% + 10px);
     }
 }
