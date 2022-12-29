@@ -15,7 +15,7 @@ body {
     background: linear-gradient(to bottom, #F6EEE0, #A45C40);
     background-repeat: no-repeat;
     height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .bg {
