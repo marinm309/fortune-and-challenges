@@ -43,10 +43,10 @@
         'textFontSize': 24,         // Set default font size for the segments.
         'textOrientation': 'vertical', // Make text vertial so goes down from the outside of wheel.
         'textAlignment': 'outer',    // Align text to outside of wheel.
-        'numSegments': 24,         // Specify number of segments.
+        'numSegments': 6,         // Specify number of segments.
         'segments':             // Define segments including colour and text.
             [                               // font size and text colour overridden on backrupt segments.
-                { 'fillStyle': '#ee1c24', 'text': '300' },
+                {% comment %} { 'fillStyle': '#ee1c24', 'text': '300' },
                 { 'fillStyle': '#3cb878', 'text': '450' },
                 { 'fillStyle': '#f6989d', 'text': '600' },
                 { 'fillStyle': '#00aef0', 'text': '750' },
@@ -63,7 +63,7 @@
                 { 'fillStyle': '#00aef0', 'text': '650' },
                 { 'fillStyle': '#ee1c24', 'text': '1000' },
                 { 'fillStyle': '#f6989d', 'text': '500' },
-                { 'fillStyle': '#f26522', 'text': '400' },
+                { 'fillStyle': '#f26522', 'text': '400' }, {% endcomment %}
                 { 'fillStyle': '#3cb878', 'text': '900' },
                 { 'fillStyle': '#000000', 'text': 'BANKRUPT', 'textFontSize': 16, 'textFillStyle': '#ffffff' },
                 { 'fillStyle': '#a186be', 'text': '600' },
