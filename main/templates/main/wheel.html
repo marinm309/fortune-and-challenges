@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="{% static 'css/wheel.css' %}" type="text/css" />
     <script type="text/javascript" src="{% static 'js/Winwheel.js' %}"></script>
     <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
+        integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <div align="center" class="whole-wheel-wrapper">
@@ -155,41 +157,41 @@
     // Click handler for spin button.
     // -------------------------------------------------------
     function startSpin() {
-        const body = document.body
-        const video = document.createElement('video')
-        video.width = 150
-        video.height = 150
-        video.autoplay = true
-        const s = document.createElement('source')
-        s.src = "{% static 'images/cat.mp4' %}"
-        s.type = "video/mp4"
-        video.appendChild(s)
-        body.append(video)
-
-        setInterval(function(){
-            video.remove()
-        }, 1500)
-
-        console.log('video')
         // Ensure that spinning can't be clicked again while already running.
         if (wheelSpinning == false) {
+
+            const body = document.body
+            const video = document.createElement('video')
+            video.width = 150
+            video.height = 150
+            video.autoplay = true
+            const s = document.createElement('source')
+            s.src = "{% static 'images/cat.mp4' %}"
+            s.type = "video/mp4"
+            video.appendChild(s)
+            body.append(video)
+
+            setInterval(function () {
+                video.remove()
+
+                theWheel.animation.spins = 15
+
+                // Disable the spin button so can't click again while wheel is spinning.
+                // document.getElementById('spin_button').src = "{% static 'images/spin_off.png' %}";
+                // document.getElementById('spin_button').className = "";
+
+                // Begin the spin animation by calling startAnimation on the wheel object.
+                theWheel.startAnimation();
+
+                // Set to true so that power can't be changed and spin button re-enabled during
+                // the current animation. The user will have to reset before spinning again.
+                wheelSpinning = true;
+
+                document.getElementById('spin_button').src = "{% static 'images/spin_on.png' %}";
+            }, 1500)
+
             // Based on the power level selected adjust the number of spins for the wheel, the more times is has
             // to rotate with the duration of the animation the quicker the wheel spins.
-
-            theWheel.animation.spins = 15
-
-            // Disable the spin button so can't click again while wheel is spinning.
-            document.getElementById('spin_button').src = "{% static 'images/spin_off.png' %}";
-            document.getElementById('spin_button').className = "";
-
-            // Begin the spin animation by calling startAnimation on the wheel object.
-            theWheel.startAnimation();
-
-            // Set to true so that power can't be changed and spin button re-enabled during
-            // the current animation. The user will have to reset before spinning again.
-            wheelSpinning = true;
-
-            document.getElementById('spin_button').src = "{% static 'images/spin_on.png' %}";
         }
     }
 
