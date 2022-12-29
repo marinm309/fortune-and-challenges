@@ -159,7 +159,7 @@ nav ul a:hover {
     .old-fortunes{
         height: 200px;
         width: 700px;
-        top: 94%;
+        top: 74%;
         left: 50% !important;
         transform: translate(-50%, -50%);
         margin-bottom: 30px;
@@ -169,7 +169,7 @@ nav ul a:hover {
         border-radius: 10px;
         object-fit: cover;
         position: absolute;
-        top: 50%;
+        top: 35%;
         left: 50% !important;
         transform: translate(-50%, -50%);
     }

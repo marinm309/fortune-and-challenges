@@ -56,10 +56,10 @@
 
     window.addEventListener("load", (event) => {
         const main = document.querySelector('main')
+        const body = document.querySelector('body')
         document.querySelector('canvas').classList.add('fortune-canvas')
         main.addEventListener('touchstart', onScratch)
         main.addEventListener('touchend', function () {
-            const body = document.querySelector('body')
             body.style.overflow = 'unset'
             body.style.height = 'unset'
         })
