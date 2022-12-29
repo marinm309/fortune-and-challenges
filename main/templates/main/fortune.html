@@ -17,7 +17,7 @@
         transform: translate(-50%, -50%);
     }
 </style>
-<h1 class="fortune-title">КЪСМЕТЧЕ</h1>
+<!-- <h1 class="fortune-title">КЪСМЕТЧЕ</h1> -->
 <div class="old-fortunes">
     <ul>
         {% for item in old_items_list %}
@@ -84,11 +84,14 @@
         }
         textSize(size);
         textWrap(WORD);
+        textStyle(ITALIC);
         topLayer = createGraphics(width, height);
-        topLayer.background(200);
-        topLayer.textSize(18);
+        topLayer.background('#C38370');
+        topLayer.textSize(size);
         topLayer.textAlign(CENTER, CENTER);
         topLayer.textFont('Helvetica')
+        topLayer.textStyle(ITALIC);
+        topLayer.fill(255);
         topLayer.text("Изтъркай ме", width / 16, height / 4, (canvasWidth - 2 * (canvasWidth / 16)) / 2, 150);
         topLayer.imageMode(CENTER);
         topLayer.strokeWeight(40);
@@ -96,7 +99,8 @@
     }
 
     function draw() {
-        background(255);
+        background('#E4B7A0');
+        fill(255);
         text('{{item.description}}', width / 16, height / 4, (canvasWidth - 2 * (canvasWidth / 16)) / 2, 150);
 
         if (mouseIsPressed) {
