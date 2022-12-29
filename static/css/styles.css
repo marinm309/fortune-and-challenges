@@ -179,6 +179,13 @@ nav ul a:hover {
     box-shadow: 0 0 0 0.2rem #E4B7A0 !important;
 }
 
+.logo-img{
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
 @media only screen and (max-width: 1500px) {
     .old-fortunes {
         height: 200px;
@@ -202,10 +209,6 @@ nav ul a:hover {
 @media only screen and (max-width: 800px) {
     nav ul {
         padding: unset;
-    }
-
-    nav {
-        height: 46px;
     }
 }
 
