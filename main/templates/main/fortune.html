@@ -43,33 +43,22 @@
 
     let size = window.innerWidth
 
-    // window.addEventListener('load', function () {
-    //     size = window.innerWidth
-    //     if (size <= 600) {
-    //         size = 10
-    //     } else if (size <= 1500) {
-    //         size = 16
-    //     } else {
-    //         size = 20
-    //     }
-    // })
-
     window.addEventListener("load", (event) => {
         const main = document.querySelector('main')
         const body = document.querySelector('body')
         document.querySelector('canvas').classList.add('fortune-canvas')
-        main.addEventListener('touchstart', onScratch)
-        main.addEventListener('touchend', function () {
-            body.style.overflow = 'unset'
-            body.style.height = 'unset'
-        })
+        // main.addEventListener('touchstart', onScratch)
+        // main.addEventListener('touchend', function () {
+        //     body.style.overflow = 'unset'
+        //     // body.style.height = 'unset'
+        // })
     })
 
-    function onScratch() {
-        const body = document.querySelector('body')
-        body.style.overflow = 'hidden'
-        body.style.height = '100%'
-    }
+    // function onScratch() {
+    //     const body = document.querySelector('body')
+    //     body.style.overflow = 'hidden'
+    //     body.style.height = '100%'
+    // }
 
     function setup() {
         createCanvas(canvasWidth / 2, 300);
