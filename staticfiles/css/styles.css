@@ -14,15 +14,14 @@ body {
     background: -webkit-linear-gradient(to bottom, #F6EEE0, #A45C40);
     background: linear-gradient(to bottom, #F6EEE0, #A45C40);
     background-repeat: no-repeat;
-    height: 100vh;
-    /* overflow: hidden; */
+    min-height: 100vh;
 }
 
 .bg {
     position: absolute;
     background-repeat: no-repeat;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
     background-image: url(../images/coffe.jpg);
     background-size: cover;
@@ -175,7 +174,7 @@ nav ul a:hover {
     border: 5px solid white;
 }
 
-.form-control:focus{
+.form-control:focus {
     border-color: #C38370;
     box-shadow: 0 0 0 0.2rem #E4B7A0 !important;
 }
