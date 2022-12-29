@@ -7,8 +7,12 @@ arr.forEach((x) => {
 })
 
 function increase() {
-	document.body.style.height = '210vh'
-	document.querySelector('.bg').style.height = '210vh'
+	let cnt = 0
+	if (cnt > 0) {
+		document.body.style.height = '210vh'
+		document.querySelector('.bg').style.height = '210vh'
+	}
+	cnt++
 }
 
 function decrease() {
