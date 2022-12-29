@@ -18,6 +18,19 @@ body {
     overflow: hidden;
 }
 
+.bg {
+    position: absolute;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url(../images/bg.jpg);
+    background-size: cover;
+    top: 0;
+    left: 0;
+    opacity: 0.2;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -36,6 +49,8 @@ nav {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     border-bottom: 5px solid white;
+    z-index: 5;
+    position: relative;
 }
 
 nav ul {
@@ -132,6 +147,7 @@ nav ul a:hover {
     transform: translate(-50%, -50%);
     overflow-y: auto;
     border: 5px solid white;
+    z-index: 5;
 }
 
 .old-fortunes ul {
