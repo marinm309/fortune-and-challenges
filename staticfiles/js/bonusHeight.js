@@ -3,6 +3,10 @@ const arr = [].slice.call(inputs)
 let cnt = 0
 let currentSize
 
+document.querySelector('form').addEventListener('submit', function () {
+	document.querySelector('button').disabled = true
+})
+
 window.addEventListener('resize', function () {
 	currentSize = this.document.body.clientWidth
 })
