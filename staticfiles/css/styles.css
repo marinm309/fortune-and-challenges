@@ -115,17 +115,17 @@ nav ul a:hover {
     opacity: 0.7;
 }
 
-.games-wrapper li:nth-child(1) {
+/* .games-wrapper li:nth-child(1) {
     background-image: url('../images/1.jpg');
-}
+} */
 
 /* .games-wrapper li:nth-child(2) {
     background-image: url('../images/2.jpg');
 } */
 
-.games-wrapper li:nth-child(3) {
+/* .games-wrapper li:nth-child(3) {
     background-image: url('../images/3.jpg');
-}
+} */
 
 .games-wrapper li a {
     width: 100%;
@@ -141,10 +141,11 @@ nav ul a:hover {
 .games-wrapper li:hover {
     /* border: 30px solid rgba(0, 0, 0, 0); */
     opacity: 1;
+    background-color: black;
 }
 
 .games-wrapper li a:hover {
-    color: black;
+    color: white;
 }
 
 .old-fortunes {
