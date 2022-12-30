@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . models import Fortune, UserFortune
 from random import choice
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+import json
 
 def home(request):
     context = {}
@@ -36,7 +38,25 @@ def challenge(request):
     return render(request, 'main/challenge.html', context)
 
 
-#@login_required(login_url='login')
+@login_required(login_url='login')
 def wheel(request):
     context = {}
     return render(request, 'main/wheel.html', context)
+
+
+login_required(login_url='login')
+def update_customer_credits(request):
+    customer = request.user.customer
+    data = json.loads(request.body)
+    amount = data['amount']
+    print(amount)
+    if amount == 'БАНКРУТ':
+        customer.credits = 0
+        customer.save()
+        return JsonResponse({'credits': customer.credits})
+    elif amount == 'ОПИТАЙ ПАК':
+        pass
+    else:
+        customer.credits += int(amount)
+        customer.save()
+        return JsonResponse({'credits': customer.credits})

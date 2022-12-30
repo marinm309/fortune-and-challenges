@@ -44,12 +44,15 @@ ul {
 }
 
 nav {
-    height: 76px;
+    height: 10vh;
     background-color: #A45C40;
     font-size: 24px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     border-bottom: 5px solid white;
+    position: relative;
+    z-index: 5;
+    box-sizing: border-box;
 }
 
 nav ul {
@@ -95,34 +98,34 @@ nav ul a:hover {
 
 .games-wrapper {
     display: flex;
-    margin-top: 100px;
     background-color: white;
+    margin-top: -15px;
 }
 
 .games-wrapper li {
     width: 33.3333333334%;
-    height: 600px;
+    height: calc(90vh + 15px);
     box-sizing: border-box;
     font-size: 20px;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
-    background-size: cover;
+    background-size: 2450px;
     background-repeat: no-repeat;
-    background-position: 0%;
+    background-position: center;
     opacity: 0.7;
 }
 
-.games-wrapper li:nth-child(1) {
+/* .games-wrapper li:nth-child(1) {
     background-image: url('../images/1.jpg');
-}
+} */
 
-.games-wrapper li:nth-child(2) {
+/* .games-wrapper li:nth-child(2) {
     background-image: url('../images/2.jpg');
-}
+} */
 
-.games-wrapper li:nth-child(3) {
+/* .games-wrapper li:nth-child(3) {
     background-image: url('../images/3.jpg');
-}
+} */
 
 .games-wrapper li a {
     width: 100%;
@@ -138,10 +141,11 @@ nav ul a:hover {
 .games-wrapper li:hover {
     /* border: 30px solid rgba(0, 0, 0, 0); */
     opacity: 1;
+    background-color: black;
 }
 
 .games-wrapper li a:hover {
-    color: black;
+    color: white;
 }
 
 .old-fortunes {

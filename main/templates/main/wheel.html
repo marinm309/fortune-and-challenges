@@ -43,15 +43,15 @@
         'textFontSize': 24,         // Set default font size for the segments.
         'textOrientation': 'vertical', // Make text vertial so goes down from the outside of wheel.
         'textAlignment': 'outer',    // Align text to outside of wheel.
-        'numSegments': 6,         // Specify number of segments.
+        'numSegments': 24,         // Specify number of segments.
         'segments':             // Define segments including colour and text.
             [                               // font size and text colour overridden on backrupt segments.
-                {% comment %} { 'fillStyle': '#ee1c24', 'text': '300' },
+                { 'fillStyle': '#ee1c24', 'text': '300' },
                 { 'fillStyle': '#3cb878', 'text': '450' },
                 { 'fillStyle': '#f6989d', 'text': '600' },
                 { 'fillStyle': '#00aef0', 'text': '750' },
                 { 'fillStyle': '#f26522', 'text': '500' },
-                { 'fillStyle': '#000000', 'text': 'BANKRUPT', 'textFontSize': 16, 'textFillStyle': '#ffffff' },
+                { 'fillStyle': '#000000', 'text': 'БАНКРУТ', 'textFontSize': 16, 'textFillStyle': '#ffffff' },
                 { 'fillStyle': '#e70697', 'text': '3000' },
                 { 'fillStyle': '#fff200', 'text': '600' },
                 { 'fillStyle': '#f6989d', 'text': '700' },
@@ -61,15 +61,15 @@
                 { 'fillStyle': '#a186be', 'text': '300' },
                 { 'fillStyle': '#fff200', 'text': '400' },
                 { 'fillStyle': '#00aef0', 'text': '650' },
-                { 'fillStyle': '#ee1c24', 'text': '1000' },
+                { 'fillStyle': '#ffffff', 'text': 'ОПИТАЙ ПАК', 'textFontSize': 12 },
                 { 'fillStyle': '#f6989d', 'text': '500' },
-                { 'fillStyle': '#f26522', 'text': '400' }, {% endcomment %}
+                { 'fillStyle': '#f26522', 'text': '400' },
                 { 'fillStyle': '#3cb878', 'text': '900' },
-                { 'fillStyle': '#000000', 'text': 'BANKRUPT', 'textFontSize': 16, 'textFillStyle': '#ffffff' },
+                { 'fillStyle': '#000000', 'text': 'БАНКРУТ', 'textFontSize': 16, 'textFillStyle': '#ffffff' },
                 { 'fillStyle': '#a186be', 'text': '600' },
                 { 'fillStyle': '#fff200', 'text': '700' },
                 { 'fillStyle': '#00aef0', 'text': '800' },
-                { 'fillStyle': '#ffffff', 'text': 'LOOSE TURN', 'textFontSize': 12 }
+                { 'fillStyle': '#ffffff', 'text': 'ОПИТАЙ ПАК', 'textFontSize': 12 }
             ],
         'animation':           // Specify the animation to use.
         {
@@ -194,8 +194,42 @@
     // note the indicated segment is passed in as a parmeter as 99% of the time you will want to know this to inform the user of their prize.
     // -------------------------------------------------------
     function alertPrize(indicatedSegment) {
+        const csrftoken = getToken('csrftoken')
+
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                let cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    let cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
         // Do basic alert of the segment text. You would probably want to do something more interesting with this information.
+        async function update_credits() {
+            url = '/update_customer_credits/'
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({ 'amount': indicatedSegment.text })
+            })
+            const data = await response.json()
+            const credits = data['credits']
+            document.querySelector('span').textContent = credits
+        }
+        update_credits()
+
         alert("You have won " + indicatedSegment.text);
+        
     }
 
 </script>
