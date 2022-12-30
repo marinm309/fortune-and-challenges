@@ -11,8 +11,8 @@ html {
 body {
     margin: 0;
     padding: 0;
-    background: -webkit-linear-gradient(to bottom, #F6EEE0, #462417);
-    background: linear-gradient(to bottom, #F6EEE0, #462417);
+    background: -webkit-linear-gradient(to bottom, #E4B7A0, #A45C40);
+    background: linear-gradient(to bottom, #E4B7A0, #A45C40);
     background-repeat: no-repeat;
     min-height: 100vh;
     overflow-x: hidden;
