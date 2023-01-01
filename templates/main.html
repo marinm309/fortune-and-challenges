@@ -45,6 +45,12 @@
     </script>
 
     <script>
+
+        async function update_is_wheel_available() {
+            url = '/update_customer_is_wheel_available/'
+            await fetch(url)
+        }
+
         function resetAtMidnight() {
             var now = new Date();
             var night = new Date(
@@ -56,11 +62,11 @@
             var msToMidnight = night.getTime() - now.getTime();
 
             setTimeout(function () {
-                console.log('test')             //      <-- This is the function being called at midnight.
+                update_is_wheel_available()            //      <-- This is the function being called at midnight.
                 resetAtMidnight();    //      Then, reset again next midnight.
             }, msToMidnight);
         }
-        resetAtMidnight()
+        resetAtMidnight()s
     </script>
 
 </body>

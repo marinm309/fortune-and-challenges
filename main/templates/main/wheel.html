@@ -23,7 +23,12 @@
         <tr id="wheel-elements-wrapper">
             <td>
                 <div class="power_controls">
+                    {% if request.customer.is_wheel_available %}
                     <img id="spin_button" src="{% static 'images/spin_off.png' %}" alt="Spin" onClick="startSpin();" />
+                    {% else %}
+                    <p id="time-left"><span id="hours">00</span> : <span id="minutes">00</span> : <span id="seconds">00</span>
+                    </p>
+                    {% endif %}
                 </div>
             </td>
             <td width="438" height="582" class="the_wheel" align="center" valign="center">
@@ -82,7 +87,7 @@
         },
         'pins':                // Turn pins on.
         {
-            'number': 1,
+            'number': 24,
             'fillStyle': 'silver',
             'outerRadius': 4,
         }
@@ -196,41 +201,96 @@
     function alertPrize(indicatedSegment) {
         const csrftoken = getToken('csrftoken')
 
-        function getToken(name) {
-            let cookieValue = null;
-            if (document.cookie && document.cookie != '') {
-                let cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++) {
-                    let cookie = cookies[i].trim();
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
-            }
-            return cookieValue;
-        }
-        // Do basic alert of the segment text. You would probably want to do something more interesting with this information.
-        async function update_credits() {
-            url = '/update_customer_credits/'
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrftoken
-                },
-                body: JSON.stringify({ 'amount': indicatedSegment.text })
-            })
-            const data = await response.json()
-            const credits = data['credits']
-            document.querySelector('span').textContent = credits
-        }
         update_credits()
+        update_is_wheel_available()
 
         alert("You have won " + indicatedSegment.text);
-        
+
     }
+
+    function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            let cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    // Do basic alert of the segment text. You would probably want to do something more interesting with this information.
+    async function update_credits() {
+        url = '/update_customer_credits/'
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify({ 'amount': indicatedSegment.text })
+        })
+        const data = await response.json()
+        const credits = data['credits']
+        document.querySelector('span').textContent = credits
+    }
+
+    async function update_is_wheel_available() {
+        url = '/update_customer_is_wheel_available/'
+        await fetch(url)
+    }
+
+    function updateTime() {
+        const itemHours = document.getElementById('hours')
+        const itemMinutes = document.getElementById('minutes')
+        const itemSeconds = document.getElementById('seconds')
+
+        function getTimeLeft() {
+            var now = new Date();
+            var night = new Date(
+                now.getFullYear(),
+                now.getMonth(),
+                now.getDate() + 1, // the next day, ...
+                0, 0, 0 // ...at 00:00:00 hours
+            );
+            var msToMidnight = night.getTime() - now.getTime();
+            return msToMidnight
+        }
+
+        setInterval(function () {
+            updateItem()
+        }, 1000);
+
+        function updateItem() {
+            let ms = getTimeLeft()
+            let [hours, minutes, seconds] = convertMsToTime(ms)
+            itemHours.textContent = hours
+            itemMinutes.textContent = minutes
+            itemSeconds.textContent = seconds
+        }
+    }
+
+    function padTo2Digits(num) {
+        return num.toString().padStart(2, '0');
+    }
+
+    function convertMsToTime(milliseconds) {
+        let seconds = Math.floor(milliseconds / 1000);
+        let minutes = Math.floor(seconds / 60);
+        let hours = Math.floor(minutes / 60);
+
+        seconds = seconds % 60;
+        minutes = minutes % 60;
+        hours = hours % 24;
+
+        return [padTo2Digits(hours), padTo2Digits(minutes), padTo2Digits(seconds)]
+    }
+
+    updateTime()
 
 </script>
 

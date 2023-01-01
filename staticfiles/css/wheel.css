@@ -99,7 +99,27 @@ video{
     display: none;
 }
 
+#time-left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: calc(50% + 32px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    border-radius: 50%;
+}
+
 @media only screen and (max-width: 600px) {
+    #time-left {
+        font-size: 20px;
+        top: calc(50% + 10px);
+    }
+
     td.the_wheel {
         width: 320px;
         height: 350px;

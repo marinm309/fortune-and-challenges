@@ -40,8 +40,21 @@ def challenge(request):
 
 @login_required(login_url='login')
 def wheel(request):
-    context = {}
-    return render(request, 'main/wheel.html', context)
+    customer = request.user.customer
+    if customer.is_wheel_available:
+        return render(request, 'main/wheel.html')
+    else:
+        return render(request, 'main/wheel.html')
+
+
+@login_required(login_url='login')
+def update_customer_is_wheel_available(request):
+    customer = request.user.customer
+    if customer.is_wheel_available:
+        customer.is_wheel_available = False
+    else:
+        customer.is_wheel_available = True
+    customer.save()
 
 
 login_required(login_url='login')
