@@ -23,10 +23,11 @@
         <tr id="wheel-elements-wrapper">
             <td>
                 <div class="power_controls">
-                    {% if request.customer.is_wheel_available %}
+                    {% if request.user.customer.is_wheel_available %}
                     <img id="spin_button" src="{% static 'images/spin_off.png' %}" alt="Spin" onClick="startSpin();" />
                     {% else %}
-                    <p id="time-left"><span id="hours">00</span> : <span id="minutes">00</span> : <span id="seconds">00</span>
+                    <p id="time-left"><span id="hours">00</span> : <span id="minutes">00</span> : <span
+                            id="seconds">00</span>
                     </p>
                     {% endif %}
                 </div>
@@ -87,7 +88,7 @@
         },
         'pins':                // Turn pins on.
         {
-            'number': 24,
+            'number': 1,
             'fillStyle': 'silver',
             'outerRadius': 4,
         }
@@ -198,13 +199,32 @@
     // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters
     // note the indicated segment is passed in as a parmeter as 99% of the time you will want to know this to inform the user of their prize.
     // -------------------------------------------------------
-    function alertPrize(indicatedSegment) {
+    async function alertPrize(indicatedSegment) {
         const csrftoken = getToken('csrftoken')
 
-        update_credits()
-        update_is_wheel_available()
+        await update_credits()
+        await update_is_wheel_available()
 
         alert("You have won " + indicatedSegment.text);
+
+        window.location.reload()
+
+        // window.location.reload()
+
+        async function update_credits() {
+            url = '/update_customer_credits/'
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({ 'amount': indicatedSegment.text })
+            })
+            const data = await response.json()
+            const credits = data['credits']
+            document.querySelector('span').textContent = credits
+        }
 
     }
 
@@ -224,20 +244,6 @@
         return cookieValue;
     }
     // Do basic alert of the segment text. You would probably want to do something more interesting with this information.
-    async function update_credits() {
-        url = '/update_customer_credits/'
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
-            },
-            body: JSON.stringify({ 'amount': indicatedSegment.text })
-        })
-        const data = await response.json()
-        const credits = data['credits']
-        document.querySelector('span').textContent = credits
-    }
 
     async function update_is_wheel_available() {
         url = '/update_customer_is_wheel_available/'
@@ -254,8 +260,8 @@
             var night = new Date(
                 now.getFullYear(),
                 now.getMonth(),
-                now.getDate() + 1, // the next day, ...
-                0, 0, 0 // ...at 00:00:00 hours
+                now.getDate() + 0, // the next day, ...
+                15, 0, 0 // ...at 00:00:00 hours
             );
             var msToMidnight = night.getTime() - now.getTime();
             return msToMidnight
@@ -290,7 +296,10 @@
         return [padTo2Digits(hours), padTo2Digits(minutes), padTo2Digits(seconds)]
     }
 
-    updateTime()
+    if(document.getElementById('time-left')){
+        updateTime()
+    }
+
 
 </script>
 

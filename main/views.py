@@ -4,6 +4,7 @@ from random import choice
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import json
+from users.models import Customer
 
 def home(request):
     context = {}
@@ -52,9 +53,16 @@ def update_customer_is_wheel_available(request):
     customer = request.user.customer
     if customer.is_wheel_available:
         customer.is_wheel_available = False
-    else:
-        customer.is_wheel_available = True
-    customer.save()
+        customer.save()
+    return JsonResponse({'asdf': 'asdf'})
+
+
+def reset_at_midnight(request):
+    customers = Customer.objects.all()
+    for c in customers:
+        c.is_wheel_available = True
+        c.save()
+    return JsonResponse({'asdf': 'asdf'})
 
 
 login_required(login_url='login')
