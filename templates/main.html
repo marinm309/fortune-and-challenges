@@ -45,6 +45,7 @@
     </script>
 
     <script>
+        let cnt = 0
 
         async function reset_at_midnight(){
             url = '/reset_at_midnight/'
@@ -56,14 +57,15 @@
             var night = new Date(
                 now.getFullYear(),
                 now.getMonth(),
-                now.getDate() + 1, // the next day, ...
-                0, 0, 0 // ...at 00:00:00 hours
+                now.getDate() + cnt, // the next day, ...
+                15, 30, 0 // ...at 00:00:00 hours
             );
             var msToMidnight = night.getTime() - now.getTime();
 
             setTimeout(function () {
                 reset_at_midnight()            //      <-- This is the function being called at midnight.
-                resetAtMidnight();    //      Then, reset again next midnight.
+                resetAtMidnight();
+                cnt++    //      Then, reset again next midnight.
             }, msToMidnight);
         }
         resetAtMidnight()
