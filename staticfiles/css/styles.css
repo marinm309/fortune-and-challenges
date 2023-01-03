@@ -111,7 +111,7 @@ nav ul a:hover {
     transition-timing-function: ease-in-out;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: calc(width);
+    background-size: cover;
     opacity: 0.8;
 }
 
@@ -234,6 +234,12 @@ nav ul a:hover {
         top: 35%;
         left: 50% !important;
         transform: translate(-50%, -50%);
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .games-wrapper li:nth-child(3) {
+        background-image: url('../images/10.jpg');
     }
 }
 
