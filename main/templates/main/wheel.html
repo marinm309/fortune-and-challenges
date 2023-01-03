@@ -8,7 +8,6 @@
     <title>HTML5 Canvas Winning Wheel</title>
     <link rel="stylesheet" href="{% static 'css/wheel.css' %}" type="text/css" />
     <script type="text/javascript" src="{% static 'js/Winwheel.js' %}"></script>
-    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
         integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -42,6 +41,10 @@
     </table>
 </div>
 <script>
+    const urls = {
+        'update_customers_credits_url': '',
+        'update_customer_is_wheel_available_url': ''
+    }
     // Create new wheel object specifying the parameters at creation time.
     let theWheel = new Winwheel({
         'outerRadius': 212,        // Set outer radius so wheel fits inside the background.
@@ -150,13 +153,13 @@
     function startSpin() {
         // Ensure that spinning can't be clicked again while already running.
         if (wheelSpinning == false) {
-
+            
             const video = document.querySelector('video')
             video.style.display = 'block'
             document.getElementById('spin_button').src = "{% static 'images/spin_on.png' %}";
             video.play()
 
-            setTimeout(function () {
+            setTimeout(async function () {
                 video.style.display = 'none'
 
                 theWheel.animation.spins = 15
@@ -168,6 +171,7 @@
 
                 // Begin the spin animation by calling startAnimation on the wheel object.
                 theWheel.startAnimation();
+                await update_is_wheel_available()
 
                 // Set to true so that power can't be changed and spin button re-enabled during
                 // the current animation. The user will have to reset before spinning again.
@@ -203,7 +207,6 @@
         const csrftoken = getToken('csrftoken')
 
         await update_credits()
-        await update_is_wheel_available()
 
         alert("You have won " + indicatedSegment.text);
 

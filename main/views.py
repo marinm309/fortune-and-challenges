@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import json
 from users.models import Customer
+from django.utils import timezone
 
 def home(request):
     context = {}
@@ -42,10 +43,11 @@ def challenge(request):
 @login_required(login_url='login')
 def wheel(request):
     customer = request.user.customer
-    if customer.is_wheel_available:
-        return render(request, 'main/wheel.html')
-    else:
-        return render(request, 'main/wheel.html')
+
+    if timezone.now().year > customer.last_wheel_spin.year or timezone.now().month > customer.last_wheel_spin.month or timezone.now().day > customer.last_wheel_spin.day:
+        customer.is_wheel_available = True
+    
+    return render(request, 'main/wheel.html')
 
 
 @login_required(login_url='login')
@@ -53,6 +55,7 @@ def update_customer_is_wheel_available(request):
     customer = request.user.customer
     if customer.is_wheel_available:
         customer.is_wheel_available = False
+        customer.last_wheel_spin = timezone.now()
         customer.save()
     return JsonResponse({'asdf': 'asdf'})
 
@@ -70,7 +73,6 @@ def update_customer_credits(request):
     customer = request.user.customer
     data = json.loads(request.body)
     amount = data['amount']
-    print(amount)
     if amount == 'БАНКРУТ':
         customer.credits = 0
         customer.save()

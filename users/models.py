@@ -17,6 +17,7 @@ class Customer(models.Model):
     user = models.OneToOneField(AppUser, null=False, blank=False, on_delete=models.CASCADE)
     name = models.CharField(null=False, blank=False, max_length=50, validators=[MinLengthValidator(5)])
     credits = models.IntegerField(default=0)
+    last_wheel_spin = models.DateTimeField(null=True, blank=True)
     is_wheel_available = models.BooleanField(default=True)
 
     def __str__(self) -> str:

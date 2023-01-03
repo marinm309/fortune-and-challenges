@@ -44,7 +44,7 @@
 
     </script>
 
-    <script>
+    <!-- <script>
 
         async function reset_at_midnight(){
             url = '/reset_at_midnight/'
@@ -60,6 +60,8 @@
                 0, 0, 0 // ...at 00:00:00 hours
             );
             var msToMidnight = night.getTime() - now.getTime();
+            
+            console.log(msToMidnight)
 
             setTimeout(function () {
                 reset_at_midnight()            //      <-- This is the function being called at midnight.
@@ -67,7 +69,7 @@
             }, msToMidnight);
         }
         resetAtMidnight()
-    </script>
+    </script> -->
 
 </body>
 
