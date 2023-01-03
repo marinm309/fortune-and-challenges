@@ -52,12 +52,15 @@ def wheel(request):
 
 @login_required(login_url='login')
 def update_customer_is_wheel_available(request):
-    customer = request.user.customer
-    if customer.is_wheel_available:
-        customer.is_wheel_available = False
-        customer.last_wheel_spin = timezone.now()
-        customer.save()
-    return JsonResponse({'asdf': 'asdf'})
+    try:
+        customer = request.user.customer
+        if customer.is_wheel_available:
+            customer.is_wheel_available = False
+            customer.last_wheel_spin = timezone.now()
+            customer.save()
+            return redirect('wheel')
+    except:
+        return redirect('login')
 
 
 login_required(login_url='login')
