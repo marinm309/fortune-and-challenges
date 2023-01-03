@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from .managers import AppUserManager
 import uuid
 from django.core.validators import MinLengthValidator
+from django.contrib.sessions.models import Session
 
 class AppUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
@@ -23,3 +24,6 @@ class Customer(models.Model):
     def __str__(self) -> str:
         return self.name
 
+class UserSession(models.Model):
+    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
+    session = models.OneToOneField(Session, on_delete=models.CASCADE)

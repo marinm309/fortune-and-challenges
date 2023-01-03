@@ -60,14 +60,6 @@ def update_customer_is_wheel_available(request):
     return JsonResponse({'asdf': 'asdf'})
 
 
-def reset_at_midnight(request):
-    customers = Customer.objects.all()
-    for c in customers:
-        c.is_wheel_available = True
-        c.save()
-    return JsonResponse({'asdf': 'asdf'})
-
-
 login_required(login_url='login')
 def update_customer_credits(request):
     customer = request.user.customer
