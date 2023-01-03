@@ -4,7 +4,6 @@ from random import choice
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import json
-from users.models import Customer
 from django.utils import timezone
 
 def home(request):
@@ -46,6 +45,7 @@ def wheel(request):
 
     if timezone.now().year > customer.last_wheel_spin.year or timezone.now().month > customer.last_wheel_spin.month or timezone.now().day > customer.last_wheel_spin.day:
         customer.is_wheel_available = True
+        customer.save()
     
     return render(request, 'main/wheel.html')
 
@@ -58,12 +58,12 @@ def update_customer_is_wheel_available(request):
             customer.is_wheel_available = False
             customer.last_wheel_spin = timezone.now()
             customer.save()
-            return redirect('wheel')
+            return JsonResponse({'asdf': 'asdf'})
     except:
-        return redirect('login')
+        raise Exception('Session expired!')
 
 
-login_required(login_url='login')
+@login_required(login_url='login')
 def update_customer_credits(request):
     try:
         customer = request.user.customer
@@ -80,4 +80,4 @@ def update_customer_credits(request):
             customer.save()
             return JsonResponse({'credits': customer.credits})
     except:
-        return redirect('login')
+        raise Exception('Session expired!')

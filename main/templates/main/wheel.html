@@ -174,7 +174,15 @@
                 // window.onbeforeunload = function () {
                 //     return "Ако напуснеш страницата няма да получиш точки!";
                 // }
-                await update_is_wheel_available()
+                try {
+                    const response = await update_is_wheel_available()
+                    if(response.redirected){
+                        throw new Error('Session expired!')
+                    }
+                }catch {
+                    window.location.assign("/users/login/")
+                }
+                
 
                 // Set to true so that power can't be changed and spin button re-enabled during
                 // the current animation. The user will have to reset before spinning again.
@@ -215,8 +223,6 @@
 
         window.location.reload()
 
-        // window.location.reload()
-
         async function update_credits() {
             url = '/update_customer_credits/'
             const response = await fetch(url, {
@@ -253,7 +259,8 @@
 
     async function update_is_wheel_available() {
         url = '/update_customer_is_wheel_available/'
-        await fetch(url)
+        const response = await fetch(url)
+        return response
     }
 
     function updateTime() {
