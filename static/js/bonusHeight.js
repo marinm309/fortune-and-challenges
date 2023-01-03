@@ -7,6 +7,10 @@ window.addEventListener('resize', function () {
 	currentSize = this.document.body.clientWidth
 })
 
+document.querySelector('form').addEventListener('submit', function () {
+	document.querySelector('button').disabled = true
+})
+
 arr.forEach((x) => {
 	x.addEventListener('focus', increase)
 	x.addEventListener('focusout', decrease)
