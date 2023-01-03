@@ -161,6 +161,23 @@ nav ul a:hover {
     border: 5px solid white;
 }
 
+.old-fortunes::-webkit-scrollbar {
+    width: 10px;
+}
+
+.old-fortunes::-webkit-scrollbar-track {
+    background-color: #af6f5b;
+}
+
+.old-fortunes::-webkit-scrollbar-thumb {
+    background-color: #A45C40;
+    border-radius: 10px;
+}
+
+.old-fortunes::-webkit-scrollbar-thumb:hover {
+    background-color: #8f462a;
+}
+
 .old-fortunes ul {
     display: flex;
     flex-direction: column;
