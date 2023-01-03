@@ -62,16 +62,19 @@ def update_customer_is_wheel_available(request):
 
 login_required(login_url='login')
 def update_customer_credits(request):
-    customer = request.user.customer
-    data = json.loads(request.body)
-    amount = data['amount']
-    if amount == 'БАНКРУТ':
-        customer.credits = 0
-        customer.save()
-        return JsonResponse({'credits': customer.credits})
-    elif amount == 'ОПИТАЙ ПАК':
-        pass
-    else:
-        customer.credits += int(amount)
-        customer.save()
-        return JsonResponse({'credits': customer.credits})
+    try:
+        customer = request.user.customer
+        data = json.loads(request.body)
+        amount = data['amount']
+        if amount == 'БАНКРУТ':
+            customer.credits = 0
+            customer.save()
+            return JsonResponse({'credits': customer.credits})
+        elif amount == 'ОПИТАЙ ПАК':
+            pass
+        else:
+            customer.credits += int(amount)
+            customer.save()
+            return JsonResponse({'credits': customer.credits})
+    except:
+        return redirect('login')

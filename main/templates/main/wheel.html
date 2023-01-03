@@ -171,9 +171,9 @@
 
                 // Begin the spin animation by calling startAnimation on the wheel object.
                 theWheel.startAnimation();
-                window.onbeforeunload = function () {
-                    return "Ако напуснеш страницата няма да получиш точки!";
-                }
+                // window.onbeforeunload = function () {
+                //     return "Ако напуснеш страницата няма да получиш точки!";
+                // }
                 await update_is_wheel_available()
 
                 // Set to true so that power can't be changed and spin button re-enabled during
