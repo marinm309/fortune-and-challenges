@@ -21,6 +21,12 @@ class Customer(models.Model):
     last_wheel_spin = models.DateTimeField(null=True, blank=True)
     is_wheel_available = models.BooleanField(default=True)
 
+
+    @property
+    def customer_credits(self):
+        print(self.credits)
+        return "{:,}".format(self.credits)
+
     def __str__(self) -> str:
         return self.name
 

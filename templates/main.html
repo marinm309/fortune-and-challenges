@@ -21,7 +21,7 @@
             {% if request.user.is_authenticated %}
             <li>
                 <p>F-coin: <span
-                        style="font-weight: bold; font-style: italic;">{{request.user.customer.credits}}</span></p>
+                        style="font-weight: bold; font-style: italic;">{{request.user.customer.customer_credits}}</span></p>
             </li>
             <li><a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
             {% else %}
