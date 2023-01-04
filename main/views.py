@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import json
 from django.utils import timezone
+from datetime import datetime, timedelta
 
 def home(request):
     context = {}
@@ -43,7 +44,9 @@ def challenge(request):
 def wheel(request):
     customer = request.user.customer
 
-    if timezone.now().year > customer.last_wheel_spin.year or timezone.now().month > customer.last_wheel_spin.month or timezone.now().day > customer.last_wheel_spin.day:
+    realt_customer_time = customer.last_wheel_spin + timedelta(hours=2)
+
+    if datetime.now().year > realt_customer_time.year or datetime.now().month > realt_customer_time.month or datetime.now().day > realt_customer_time.day:
         customer.is_wheel_available = True
         customer.save()
     
