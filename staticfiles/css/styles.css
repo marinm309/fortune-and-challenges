@@ -220,7 +220,7 @@ nav ul a:hover {
 
 @media only screen and (max-width: 1500px) {
     .old-fortunes {
-        height: 220px;
+        height: 180px;
         width: 700px;
         top: 74%;
         left: 50% !important;
