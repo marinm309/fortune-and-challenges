@@ -115,13 +115,13 @@ nav ul a:hover {
     opacity: 0.8;
 }
 
-.games-wrapper li:nth-child(1) {
-    background-image: url('../images/2.jpg');
-}
-
-/* .games-wrapper li:nth-child(2) {
+/* .games-wrapper li:nth-child(1) {
     background-image: url('../images/2.jpg');
 } */
+
+.games-wrapper li:nth-child(2) {
+    background-image: url('../images/2.jpg');
+}
 
 .games-wrapper li:nth-child(3) {
     background-image: url('../images/1.jpg');
